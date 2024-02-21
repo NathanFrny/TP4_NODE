@@ -26,8 +26,8 @@ module.exports = {
             const monsterDetails = await monsterResponse.body.json();
 
             const encounterEmbed = new EmbedBuilder()
-                .setColor('#0099ff') // Définit la couleur de l'embed
-                .setTitle(`Rencontre sauvage !`) // Définit le titre de l'embed
+                .setColor('#0099ff')
+                .setTitle(`Rencontre sauvage !`)
                 .addFields(
                     { name: 'Nom', value: monsterDetails.name },
                     { name: 'Type', value: monsterDetails.type, inline: true },
@@ -35,7 +35,7 @@ module.exports = {
                     { name: 'Points de Vie (PV)', value: String(monsterDetails.hit_points), inline: true },
                     { name: 'Classe d\'Armure (CA)', value: String(monsterDetails.armor_class), inline: true }
                 )
-                .setFooter({ text: 'Soyez prudents, aventuriers !' }); // Ajoute un pied de page à l'embed
+                .setFooter({ text: 'Soyez prudents, aventuriers !' });
 
             await interaction.reply({ embeds: [encounterEmbed] });
 
@@ -44,7 +44,7 @@ module.exports = {
                 name: monsterDetails.name,
                 armorClass: monsterDetails.armor_class[0].value,
                 hitPoints: monsterDetails.hit_points,
-                maxHitPoints: monsterDetails.hit_points, // Pour garder une trace des PV max
+                maxHitPoints: monsterDetails.hit_points,
             };
             
         } catch (error) {
