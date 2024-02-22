@@ -6,10 +6,14 @@ module.exports = {
         .setName('random_room')
         .setDescription("Permet de générer une salle aléatoire dans l'univers de donjon et dragon."),
     async execute(interaction) {
-        // Envoyer un accusé de réception de l'interaction
-        await interaction.deferReply(); // Cette fois, la réponse n'est pas éphémère car nous voulons que tout le salon voie le message
+        const masterRole = interaction.member.roles.cache.some(role => role.name === 'Maître du jeu');
 
-        // Importation dynamique de node-fetch à l'intérieur de la fonction asynchrone
+        if (!masterRole) {
+            await interaction.reply({ content: "Vous n'avez pas les permissions nécessaires pour utiliser cette commande.", ephemeral: true });
+            return;
+        }
+        await interaction.deferReply();
+
         const fetch = (await import('node-fetch')).default;
 
         const prompt = `Génére moi un exemple de description de salle avec une description pour les éléments suivants :

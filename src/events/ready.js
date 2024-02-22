@@ -16,6 +16,7 @@ module.exports = {
                 { name: 'Magicien', color: Colors.Purple },
                 { name: 'Barbare', color: Colors.Red },
                 { name: 'Barde', color: Colors.Fuchsia },
+                { name: 'Maître du jeu', color: Colors.Teal}
             ];
 
             for (const role of roles) {

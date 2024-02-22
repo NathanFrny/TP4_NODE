@@ -13,7 +13,11 @@ module.exports = {
             magicien: '1209130703292203138',
             barbare: '1209130704034865215',
             druide: '1209130700385554432',
+            mj: '1210257350267641937',
         };
+
+        // ID du rôle "Maître du jeu" pour l'exclure de la suppression
+        const mjRoleId = '1210257350267641937';
 
         // Vérifier si le customId correspond à un rôle dans la carte
         const roleId = roleMap[interaction.customId];
@@ -23,8 +27,8 @@ module.exports = {
             // Récupérer le membre à partir de l'interaction
             const member = await interaction.guild.members.fetch(interaction.user.id);
 
-            // Supprimer tous les rôles existants qui correspondent à la carte des rôles
-            const rolesToRemove = member.roles.cache.filter(role => Object.values(roleMap).includes(role.id));
+            // Supprimer tous les rôles existants qui correspondent à la carte des rôles, sauf le rôle "Maître du jeu"
+            const rolesToRemove = member.roles.cache.filter(role => Object.values(roleMap).includes(role.id) && role.id !== mjRoleId);
             await member.roles.remove(rolesToRemove);
 
             // Ajouter le nouveau rôle

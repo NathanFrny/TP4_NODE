@@ -9,6 +9,12 @@ module.exports = {
         .setName('random_encounter')
         .setDescription("Permet de lancer une rencontre aléatoire dans l'univers de donjon et dragon."),
     async execute(interaction) {
+        const masterRole = interaction.member.roles.cache.some(role => role.name === 'Maître du jeu');
+
+        if (!masterRole) {
+            await interaction.reply({ content: "Vous n'avez pas les permissions nécessaires pour utiliser cette commande.", ephemeral: true });
+            return;
+        }
         // URL de base de l'API D&D 5e - Changez cette URL selon l'API que vous utilisez
         const baseUrl = 'https://www.dnd5eapi.co/api/monsters/';
         
@@ -49,13 +55,8 @@ module.exports = {
             }
 
             const encounterEmbed = new EmbedBuilder()
-<<<<<<< Updated upstream
-                .setColor('#0099ff')
+                .setColor(color)
                 .setTitle(`Rencontre sauvage !`)
-=======
-                .setColor(color) // Définit la couleur de l'embed
-                .setTitle(`Rencontre sauvage !`) // Définit le titre de l'embed
->>>>>>> Stashed changes
                 .addFields(
                     { name: 'Nom', value: monsterDetails.name },
                     { name: 'Type', value: monsterDetails.type, inline: true },

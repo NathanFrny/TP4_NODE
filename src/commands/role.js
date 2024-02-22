@@ -39,6 +39,14 @@ module.exports = {
                     .setStyle(ButtonStyle.Success)
             );
 
-        await interaction.reply({ content: "Choisissez votre rôle :", components: [row1, row2] });
+        const row3 = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId('mj')
+                    .setLabel('Maître du jeu')
+                    .setStyle(ButtonStyle.Secondary)
+            );
+
+        await interaction.reply({ content: "Choisissez votre rôle :", components: [row1, row2, row3] });
     },
 };
