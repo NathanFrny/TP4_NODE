@@ -9,8 +9,33 @@ Listes des API utilisés:
 
 ## Initialisation du Bot.
 
+Pour que le Bot **démarre correctement** il vous faudra d'abord remplir le **conf.json** avec les informations envoyés ultérieurement.  
+Chaque variable vous est expliqué et les tokens nécessaires à son fonctionnement vous sont envoyés.  
+
+Pour remplir les rôles de le fichier conf.json, il vous faut tout d'abord **lancer une première fois le bot** après avoir entrez les informations suivantes :
+* clientId
+* guildId
+* token
+
+Pour lancer le bot ouvrez deux terminaux à partir du dossier root du projet.  
+Dans le premier terminal effectuez les commandes suivantes :  
+
+```bash
+cd src
+node deploy-commande.js
+```
+
+Dans le second terminal effectuez la commande suivante :  
+
+```bash
+npm run dev
+```
+
+Normalement les différents rôles seront **automatiquement crée** à son lancement. Ensuite, **récupérez les ID** des différents rôles crées et **ajoutez les** dans les variables
+du conf.json correspondantes.  
+Une fois le conf.json entièrement remplis, le bot est désormais **opérationnel**.
+
 Lorsque le Bot démarre, il va créer automatiquement tous les rôles nécessaires si ces derniers ne sont pas déjà présents.  
-Pour que le Bot convenablement, créez un fichier conf.json dans le dossier **src**. Vous mettrez en place le json avec les informations envoyés ultérieurement.
 
 ## Comment utiliser ?
 

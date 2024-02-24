@@ -1,23 +1,23 @@
 const { Events, InteractionType } = require('discord.js');
+const { paladin, voleur, barde, magicien, druide, mj, barbare } = require('../conf.json');
 
 module.exports = {
     name: Events.InteractionCreate,
     async execute(interaction) {
         if (interaction.type !== InteractionType.MessageComponent || !interaction.isButton()) return;
-
         // Définir une carte des customId de boutons aux identifiants de rôle
         const roleMap = {
-            paladin: '1209130698581999667',
-            voleur: '1209130702008750111',
-            barde: '1209130705246752829',
-            magicien: '1209130703292203138',
-            barbare: '1209130704034865215',
-            druide: '1209130700385554432',
-            mj: '1210257350267641937',
+            paladin: paladin,
+            voleur: voleur,
+            barde: barde,
+            magicien: magicien,
+            barbare: barbare,
+            druide: druide,
+            mj: mj,
         };
 
         // ID du rôle "Maître du jeu" pour l'exclure de la suppression
-        const mjRoleId = '1210257350267641937';
+        const mjRoleId = mj;
 
         // Vérifier si le customId correspond à un rôle dans la carte
         const roleId = roleMap[interaction.customId];
