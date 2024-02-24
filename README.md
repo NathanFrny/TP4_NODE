@@ -43,7 +43,9 @@ Lorsque le Bot démarre, il va créer automatiquement tous les rôles nécessair
 
 > Démarrer une nouvelle campagne ?
 
-Pour démarrer une nouvelle campagne, entrez la commande : /campagne
+Pour démarrer une nouvelle campagne, entrez la commande : /campagne  
+Créer une campagne créera un nouveau salon textuel.  
+**Remarque: Ce salon s'auto-détruira après 5-10 minutes d'inactivités**
 
 > Sélectionner les rôles ?
 
