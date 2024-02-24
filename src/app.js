@@ -56,5 +56,4 @@ for (const file of eventFiles) {
     }
 }
 
-// Le token permet à votre client de se connecter à Discord
 client.login(TOKEN);

@@ -11,7 +11,6 @@ module.exports = {
     async execute(interaction) {
         try {
             const term = interaction.options.getString('terme');
-            // Utilisation de l'importation dynamique pour charger le module 'node-fetch'
             import('node-fetch').then(async fetchModule => {
                 const fetch = fetchModule.default;
                 const response = await fetch(`https://api.urbandictionary.com/v0/define?term=${term}`);

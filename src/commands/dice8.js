@@ -1,4 +1,3 @@
-// Dans un nouveau fichier de commande pour /dice8
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {

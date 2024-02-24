@@ -15,43 +15,39 @@ module.exports = {
             await interaction.reply({ content: "Vous n'avez pas les permissions nécessaires pour utiliser cette commande.", ephemeral: true });
             return;
         }
-        // URL de base de l'API D&D 5e - Changez cette URL selon l'API que vous utilisez
         const baseUrl = 'https://www.dnd5eapi.co/api/monsters/';
         
         try {
-            // Récupère la liste des monstres
             const monsterListResponse = await request(`${baseUrl}`);
             const monsterList = await monsterListResponse.body.json();
 
-            // Sélectionne un monstre aléatoire de la liste
             const randomIndex = Math.floor(Math.random() * monsterList.results.length);
             const randomMonsterName = monsterList.results[randomIndex].index;
 
-            // Récupère les détails du monstre sélectionné
             const monsterResponse = await request(`${baseUrl}${randomMonsterName}`);
             const monsterDetails = await monsterResponse.body.json();
 
-            let color = '#0099ff'; // Couleur par défaut
+            let color = '#0099ff';
             switch (monsterDetails.alignment) {
                 case 'lawful good':
-                    color = '#00ff00'; // Vert
+                    color = '#00ff00';
                     break;
                 case 'neutral good':
                 case 'chaotic good':
-                    color = '#0077ff'; // Bleu clair
+                    color = '#0077ff';
                     break;
                 case 'lawful neutral':
                 case 'true neutral':
                 case 'chaotic neutral':
-                    color = '#ffff00'; // Jaune
+                    color = '#ffff00'; 
                     break;
                 case 'lawful evil':
                 case 'neutral evil':
                 case 'chaotic evil':
-                    color = '#ff0000'; // Rouge
+                    color = '#ff0000'; 
                     break;
                 default:
-                    color = '#555555'; // Gris pour non spécifié ou inconnu
+                    color = '#555555';
             }
 
             const encounterEmbed = new EmbedBuilder()

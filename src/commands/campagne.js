@@ -13,10 +13,9 @@ module.exports = {
         const channelName = `${channelNamePrefix}${nextChannelNumber.toString().padStart(2, '0')}`;
 
         try {
-            // Créer un nouveau salon textuel
             const channel = await guild.channels.create({
                 name: channelName,
-                type: 0, // 0 correspond à un salon textuel
+                type: 0,
                 permissionOverwrites: [
                     {
                         id: guild.id,
@@ -25,23 +24,19 @@ module.exports = {
                 ],
             });
 
-            // Informer l'utilisateur de la création du salon
             await interaction.reply(`Salon "${channelName}" créé avec succès !`);
 
-            // Initialiser l'heure de la dernière activité
             let lastActivity = Date.now();
 
-            // Surveiller les messages dans le salon
-            const collector = channel.createMessageCollector({ time: 300000 }); // 5 minutes en millisecondes
+            const collector = channel.createMessageCollector({ time: 300000 });
 
             collector.on('collect', m => {
                 console.log(`Message reçu dans ${channelName}: ${m.content}`);
-                lastActivity = Date.now(); // Mise à jour de l'heure de la dernière activité à chaque message
+                lastActivity = Date.now();
             });
 
             collector.on('end', collected => {
-                // Vérifier si le salon doit être supprimé (pas de messages pendant 5 minutes)
-                if (Date.now() - lastActivity >= 300000) { // 5 minutes sans activité
+                if (Date.now() - lastActivity >= 300000) { 
                     channel.delete()
                         .then(deletedChannel => console.log(`Salon "${deletedChannel.name}" supprimé en raison de l'inactivité.`))
                         .catch(console.error);

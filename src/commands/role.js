@@ -5,7 +5,6 @@ module.exports = {
         .setName('role')
         .setDescription("Permet de choisir son rôle"),
     async execute(interaction) {
-        // Première ligne de boutons
         const row1 = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
@@ -22,7 +21,6 @@ module.exports = {
                     .setStyle(ButtonStyle.Primary)
             );
 
-        // Deuxième ligne de boutons
         const row2 = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()

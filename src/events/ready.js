@@ -21,10 +21,8 @@ module.exports = {
 
             for (const role of roles) {
                 try {
-                    // Vérifier si le rôle existe déjà
                     const existingRole = guild.roles.cache.find(r => r.name === role.name);
                     if (!existingRole) {
-                        // Créer le rôle s'il n'existe pas déjà
                         await guild.roles.create({
                             name: role.name,
                             color: role.color,
