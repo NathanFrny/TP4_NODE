@@ -12,7 +12,7 @@ Listes des API utilisés:
 Pour que le Bot **démarre correctement** il vous faudra d'abord remplir le **conf.json** avec les informations envoyés ultérieurement.  
 Chaque variable vous est expliqué et les tokens nécessaires à son fonctionnement vous sont envoyés.  
 
-Pour remplir les rôles de le fichier conf.json, il vous faut tout d'abord **lancer une première fois le bot** après avoir entrez les informations suivantes :
+Pour remplir les rôles de le fichier conf.json, il vous faut tout d'abord **lancer une première fois le bot** après avoir entré les informations suivantes :
 * clientId
 * guildId
 * token
